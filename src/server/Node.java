@@ -1,17 +1,17 @@
 package server;
 
-public class Node {
+public class Node<T> {
 	private boolean available;
-	private String role;
+	private T NetworkNode;
 
-	public Node(boolean available, String role) {
+	public Node(boolean available, T NetworkNode) {
 		super();
+		this.NetworkNode = NetworkNode;
 		this.available = available;
-		this.role = role;
 	}
 
-	public String getRole() {
-		return role;
+	public T getNetworkNode() {
+		return NetworkNode;
 	}
 
 	public boolean isAvailable() {
@@ -22,8 +22,8 @@ public class Node {
 		this.available = available;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setNetworkNode(T networkNode) {
+		NetworkNode = networkNode;
 	}
 
 }

@@ -9,6 +9,7 @@ public class Message {
 	private ArrayList<Event> events;
 	private ArrayList<Profile> profiles;
 	private ArrayList<Category> categories;
+	private String JobId;
 	private boolean ack;
 
 	private ArrayList<Tuple> profile_scores;
@@ -34,6 +35,10 @@ public class Message {
 		return this.events;
 	}
 
+	public String getJobId() {
+		return JobId;
+	}
+
 	public ArrayList<Tuple> getProfile_scores() {
 		return profile_scores;
 	}
@@ -52,6 +57,10 @@ public class Message {
 
 	public void setEvents(ArrayList<Event> events) {
 		this.events = events;
+	}
+
+	public void setJobId(String jobId) {
+		JobId = jobId;
 	}
 
 	public void setProfile_scores(ArrayList<Tuple> profile_scores) {

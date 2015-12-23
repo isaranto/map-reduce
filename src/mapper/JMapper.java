@@ -8,19 +8,28 @@ import com.google.gson.Gson;
 import model.Message;
 import model.Profile;
 import model.Tuple;
+import server.Node;
+import server.Scheduler;
 
 public class JMapper implements Mapper {
 
 	public static void main(String args[]) {
 		JMapper test = new JMapper();
+		JMapper test2 = new JMapper();
 		Message msg = new Message("getEvents", true);
+		Scheduler s = new Scheduler();
+		s.mappers.addNode(new Node<Mapper>(true, test));
+		s.mappers.addNode(new Node<Mapper>(true, test2));
+		s.handleMessageFromTaskManager(new Gson().toJson(msg));
 
-		System.out.println(test.handleMessageFromNetwork(new Gson().toJson(msg).toString()));
+		// System.out.println(test.handleMessageFromNetwork(new
+		// Gson().toJson(msg).toString()));
 	}
 
 	public ArrayList<Profile> dataset;
 
-	public String handleMessageFromNetwork(String msg) {
+	@Override
+	public void handleMessageFromNetwork(String msg, Scheduler s) {
 		ArrayList<Tuple> results = new ArrayList<>();
 		Message m = new Gson().fromJson(msg, Message.class);
 		// TODO extracts query from message
@@ -30,7 +39,13 @@ public class JMapper implements Mapper {
 			results.add(map(dataset.get(i)));
 		}
 		m.setProfile_scores(results);
-		return new Gson().toJson(m);
+		try {
+			Thread.sleep(3000L);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		s.handleMessageFromMRNetwork(new Gson().toJson(m));
 
 	}
 
