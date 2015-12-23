@@ -30,7 +30,7 @@ public class MapperList {
 		return avail;
 	}
 
-	public Node getNode(int index) {
+	public Node<Mapper> getNode(int index) {
 		return nodes.get(index);
 	}
 

@@ -6,28 +6,35 @@ import com.google.gson.Gson;
 
 import mapper.Mapper;
 import model.Message;
+import model.Profile;
 import model.Tuple;
 
 public class MapperJob extends Job {
-	private ArrayList<Tuple> cache;
+	private ArrayList<Tuple<Profile, Integer>> cache;
 
 	private ArrayList<Node<Mapper>> allocated_mappers;
 
 	public MapperJob(int numOfNodes, Message msg) {
 		super(numOfNodes, msg);
-		cache = new ArrayList<Tuple>();
+		cache = new ArrayList<Tuple<Profile, Integer>>();
 
 	}
 
-	public void addToCache(ArrayList<Tuple> ar) {
+	public void addToCache(ArrayList<Tuple<Profile, Integer>> ar) {
 		this.cache.addAll(ar);
+	}
+
+	public void freeResources() {
+		for (int i = 0; i < allocated_mappers.size(); i++) {
+			allocated_mappers.get(i).setAvailable(true);
+		}
 	}
 
 	public ArrayList<Node<Mapper>> getAllocated_mappers() {
 		return allocated_mappers;
 	}
 
-	public ArrayList<Tuple> getCache() {
+	public ArrayList<Tuple<Profile, Integer>> getCache() {
 		return cache;
 	}
 
@@ -44,7 +51,7 @@ public class MapperJob extends Job {
 		this.allocated_mappers = allocated_mappers;
 	}
 
-	public void setCache(ArrayList<Tuple> cache) {
+	public void setCache(ArrayList<Tuple<Profile, Integer>> cache) {
 		this.cache = cache;
 	}
 

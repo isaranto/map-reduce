@@ -8,19 +8,11 @@ import com.google.gson.Gson;
 import model.Message;
 import model.Profile;
 import model.Tuple;
-import server.Node;
 import server.Scheduler;
 
 public class JMapper implements Mapper {
 
 	public static void main(String args[]) {
-		JMapper test = new JMapper();
-		JMapper test2 = new JMapper();
-		Message msg = new Message("getEvents", true);
-		Scheduler s = new Scheduler();
-		s.mappers.addNode(new Node<Mapper>(true, test));
-		s.mappers.addNode(new Node<Mapper>(true, test2));
-		s.handleMessageFromTaskManager(new Gson().toJson(msg));
 
 		// System.out.println(test.handleMessageFromNetwork(new
 		// Gson().toJson(msg).toString()));
@@ -30,7 +22,7 @@ public class JMapper implements Mapper {
 
 	@Override
 	public void handleMessageFromNetwork(String msg, Scheduler s) {
-		ArrayList<Tuple> results = new ArrayList<>();
+		ArrayList<Tuple<Profile, Integer>> results = new ArrayList<>();
 		Message m = new Gson().fromJson(msg, Message.class);
 		// TODO extracts query from message
 		String query = m.getAction();

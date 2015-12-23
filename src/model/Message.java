@@ -12,7 +12,7 @@ public class Message {
 	private String JobId;
 	private boolean ack;
 
-	private ArrayList<Tuple> profile_scores;
+	private ArrayList<Tuple<Profile, Integer>> profile_scores;
 
 	public Message(String action, boolean ack) {
 		this.action = action;
@@ -39,7 +39,7 @@ public class Message {
 		return JobId;
 	}
 
-	public ArrayList<Tuple> getProfile_scores() {
+	public ArrayList<Tuple<Profile, Integer>> getProfile_scores() {
 		return profile_scores;
 	}
 
@@ -63,7 +63,7 @@ public class Message {
 		JobId = jobId;
 	}
 
-	public void setProfile_scores(ArrayList<Tuple> profile_scores) {
+	public void setProfile_scores(ArrayList<Tuple<Profile, Integer>> profile_scores) {
 		this.profile_scores = profile_scores;
 	}
 
