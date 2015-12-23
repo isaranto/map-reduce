@@ -1,9 +1,9 @@
 package model;
 
 public class Profile {
-	private String name, bio, country, city, state, email, gender, hometown,
-			language, link, flickr, tumblr, twitter, linkedin, fb_name,
-			fb_gender, password;
+	private String name, bio, country, city, state, email, gender, hometown, language, link, flickr, tumblr, twitter,
+			linkedin, fb_name, fb_gender, password;
+
 	private Integer id, joined, facebook, birth_day, birth_month, birth_year;
 	private Double lon, lat;
 
@@ -205,6 +205,16 @@ public class Profile {
 
 	public void setTwitter(String twitter) {
 		this.twitter = twitter;
+	}
+
+	@Override
+	public String toString() {
+		return "Profile [name=" + name + ", bio=" + bio + ", country=" + country + ", city=" + city + ", state=" + state
+				+ ", email=" + email + ", gender=" + gender + ", hometown=" + hometown + ", language=" + language
+				+ ", link=" + link + ", flickr=" + flickr + ", tumblr=" + tumblr + ", twitter=" + twitter
+				+ ", linkedin=" + linkedin + ", fb_name=" + fb_name + ", fb_gender=" + fb_gender + ", password="
+				+ password + ", id=" + id + ", joined=" + joined + ", facebook=" + facebook + ", birth_day=" + birth_day
+				+ ", birth_month=" + birth_month + ", birth_year=" + birth_year + ", lon=" + lon + ", lat=" + lat + "]";
 	}
 
 }

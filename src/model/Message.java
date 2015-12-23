@@ -5,10 +5,13 @@ import java.util.ArrayList;
 public class Message {
 
 	private String action;
+
 	private ArrayList<Event> events;
 	private ArrayList<Profile> profiles;
 	private ArrayList<Category> categories;
 	private boolean ack;
+
+	private ArrayList<Tuple> profile_scores;
 
 	public Message(String action, boolean ack) {
 		this.action = action;
@@ -31,6 +34,10 @@ public class Message {
 		return this.events;
 	}
 
+	public ArrayList<Tuple> getProfile_scores() {
+		return profile_scores;
+	}
+
 	public ArrayList<Profile> getProfiles() {
 		return this.profiles;
 	}
@@ -47,7 +54,17 @@ public class Message {
 		this.events = events;
 	}
 
+	public void setProfile_scores(ArrayList<Tuple> profile_scores) {
+		this.profile_scores = profile_scores;
+	}
+
 	public void setProfiles(ArrayList<Profile> profiles) {
 		this.profiles = profiles;
+	}
+
+	@Override
+	public String toString() {
+		return "Message [action=" + action + ", events=" + events + ", profiles=" + profiles + ", categories="
+				+ categories + ", ack=" + ack + "]";
 	}
 }
